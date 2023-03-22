@@ -72,15 +72,20 @@ class Main extends Sprite
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
-
+		
+		SUtil.check();
+		
 		initialState = StartStateSelector;
                 addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.2.2") zoom, #end framerate, framerate, skipSplash, startFullscreen));
 
-		#if !mobile
 		fps = new FpsDisplay(10, 3, 0xFFFFFF);
 		var fpsFormat = new TextFormat("Comic Sans MS Bold", 15, 0xFFFFFF, true);
 		fps.defaultTextFormat = fpsFormat;
 		addChild(fps);
-		#end
+	}
+
+	public static function toggleFuckedFPS(toggle:Bool)
+	{
+		fps.fuckFps = toggle;
 	}
 }

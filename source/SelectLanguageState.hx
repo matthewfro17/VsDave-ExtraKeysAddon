@@ -76,6 +76,10 @@ class SelectLanguageState extends MusicBeatState
       }
 
       changeSelection();
+
+      #if mobile
+      addVirtualPad(UP_DOWN, A);
+      #end
    }
    public override function update(elapsed:Float)
    {
